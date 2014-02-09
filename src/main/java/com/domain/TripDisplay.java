@@ -5,15 +5,19 @@ import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import javax.validation.constraints.NotNull;
+
 
 public class TripDisplay
 {
     public boolean isReturn;
 
     @NotEmpty
+    @NotNull
     public String origin;
 
     @NotEmpty
+    @NotNull
     public String destination;
 
     @NotEmpty
