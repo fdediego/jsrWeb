@@ -1,15 +1,20 @@
 package com.domain;
 
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
+import java.util.Date;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
+import com.domain.constraints.ReturnAfterOrigin;
+
+
+@ReturnAfterOrigin
 public class TripDisplay
 {
+	
     public boolean isReturn;
 
     @NotEmpty
@@ -20,9 +25,9 @@ public class TripDisplay
     @NotNull
     public String destination;
 
-    @NotEmpty
-    @DateTimeFormat(iso=ISO.DATE)
-    public String originDateStr;
+    @NotNull
+    @Future
+    public Date originDate;
 
     @Range(min=0, max = 23)
     public int originTimeHours;
@@ -31,8 +36,7 @@ public class TripDisplay
     public int originTimeMinutes;
 
     //--------
-    @DateTimeFormat(iso=ISO.DATE)
-    public String returnDateStr;
+    public Date returnDate;
 
     @Range(min=0, max = 23)
     public int returnTimeHours;
